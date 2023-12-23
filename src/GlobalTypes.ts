@@ -1,0 +1,1 @@
+export type TSetBool = (value: boolean) => void

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+  cursor: grab;
+  width: 3333px !important;
+  height: 3333px !important;
+}
+
+body {
+  /* background-image: url('/bg.jpg');
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh; */
+}
