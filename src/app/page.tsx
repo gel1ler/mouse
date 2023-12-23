@@ -49,6 +49,7 @@ export default function Home() {
     alignItems: 'center',
   }
 
+
   return (
     <>
       <MyDialog open={open} onClose={() => setOpen(false)} />
@@ -62,9 +63,6 @@ export default function Home() {
             onDoubleClick={event => doubleClick(event)}
             style={style}
           >
-            <Box
-              className='bg-slate-700 rounded-full w-40 h-40'
-            />
             <Tree />
             <Images
               x={clickPosition.x}

@@ -1,56 +1,40 @@
-import React from 'react'
-import './style.css'
+import { OrbitControls, SpotLight } from '@react-three/drei'
+import { Canvas, useLoader } from '@react-three/fiber'
+import React, { useEffect } from 'react'
+import { AmbientLight, Mesh, TextureLoader  } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
 
 const Tree = () => {
-    return (
-        <div className="container">
-            <div className="tree tree-animated">
-                <div className="shadow ts-3d"></div>
-                <div className="trunk ts-3d">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div className="leaves-bottom ts-3d">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div className="leaves-middle ts-3d">
-                    <div className="ts-3d"></div>
-                    <div className="ts-3d"></div>
-                    <div className="ts-3d"></div>
-                    <div className="ts-3d"></div>
-                </div>
-                <div className="leaves-top ts-3d">
-                    <div className="ts-3d"></div>
-                    <div className="ts-3d"></div>
-                    <div className="ts-3d"></div>
-                    <div className="ts-3d"></div>
-                </div>
-                <div className="star star-1 ts-3d"></div>
-                <div className="star star-2 ts-3d"></div>
-                <div className="star star-3 ts-3d"></div>
-                <div className="star star-4 ts-3d"></div>
-                <div className="star star-5 ts-3d"></div>
-                <div className="shine ts-3d"></div>
-            </div>
-            <div className="snow-container">
-                <div className="snow snow-1 snow-y-1"></div>
-                <div className="snow snow-2 snow-y-2"></div>
-                <div className="snow snow-3 snow-y-3"></div>
-                <div className="snow snow-4 snow-y-3"></div>
-                <div className="snow snow-5 snow-y-2"></div>
-                <div className="snow snow-6 snow-y-1"></div>
-                <div className="snow snow-7 snow-y-1"></div>
-                <div className="snow snow-8 snow-y-2"></div>
-                <div className="snow snow-9 snow-y-3"></div>
-                <div className="snow snow-10 snow-y-3"></div>
-            </div>
-        </div>
+    const gltf = useLoader(
+        GLTFLoader,
+        '/models/tree/scene.gltf'
+    )
 
+    const texture = useLoader(
+        TextureLoader,
+        '/models/tree/textures/kugel_weiss_baseColor.png'
+    )
+
+    useEffect(() => {
+        gltf.scene.scale.set(0.2, 0.2, 0.2)
+        gltf.scene.position.set(0, -0.5, 0)
+        gltf.scene.traverse((object) => {
+            if (object instanceof Mesh) {
+                object.castShadow = true
+                object.receiveShadow = true
+                object.material.envMapIntensity = 20
+                object.material.map = texture
+            }
+        })
+    }, [gltf])
+
+    return (
+        <Canvas>
+            {/* <OrbitControls /> */}
+            <ambientLight />
+            <primitive object={gltf.scene} />
+        </Canvas>
     )
 }
 
