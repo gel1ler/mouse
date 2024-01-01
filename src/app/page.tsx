@@ -18,7 +18,6 @@ export default function Home() {
   const [open, setOpen] = useState(false)
   const [gOpen, setGOpen] = useState(false)
   const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 })
-  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     window.scrollTo((3333 - window.innerWidth) / 2, (3333 - window.innerHeight) / 2);
@@ -39,18 +38,17 @@ export default function Home() {
   return (
     <>
       <MyDialog open={open} onClose={() => setOpen(false)} clickPosition={clickPosition} />
-      <Greeting open={gOpen} onClose={() => setGOpen(false)} />
       <Lights />
       <Mushrooms />
       <Draggable>
         <main ref={ref} onDoubleClick={event => doubleClick(event)}>
           <Bg />
-          <Tree click={() => { setMounted(true); setGOpen(true) }} />
+          <Tree />
           {cards && Object.values(cards).map((i, key) =>
             <Image
               key={key}
               cardData={i}
-              mounted={mounted}
+              mounted={true}
             />
           )}
         </main>

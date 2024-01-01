@@ -6,7 +6,7 @@ import { Button } from '@mui/material'
 
 
 
-const Tree = ({ click }: { click: any }) => {
+const Tree = () => {
     return (
 
         <div className="container">
@@ -100,14 +100,6 @@ const Tree = ({ click }: { click: any }) => {
                 <div className="snow snow-10 snow-y-3"></div>
 
             </div>
-            <Button
-                size='large'
-                variant='outlined'
-                color='success'
-                onClick={click}
-            >
-                Выпустить жабу
-            </Button>
         </div>
 
 
