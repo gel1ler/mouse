@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 main {
-  cursor: grab;
   width: 3333px !important;
   height: 3333px !important;
 }

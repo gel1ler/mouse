@@ -40,19 +40,17 @@ export default function Home() {
       <MyDialog open={open} onClose={() => setOpen(false)} clickPosition={clickPosition} />
       <Lights />
       <Mushrooms />
-      <Draggable>
-        <main ref={ref} onDoubleClick={event => doubleClick(event)}>
-          <Bg />
-          <Tree />
-          {cards && Object.values(cards).map((i, key) =>
-            <Image
-              key={key}
-              cardData={i}
-              mounted={true}
-            />
-          )}
-        </main>
-      </Draggable>
+      <main ref={ref} onDoubleClick={event => doubleClick(event)}>
+        <Bg />
+        <Tree />
+        {cards && Object.values(cards).map((i, key) =>
+          <Image
+            key={key}
+            cardData={i}
+            mounted={true}
+          />
+        )}
+      </main>
     </>
   )
 }
