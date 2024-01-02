@@ -35,7 +35,7 @@ const MyImage = ({ cardData, mounted }: { cardData: TCard, mounted?: boolean }) 
         >
 
             <Image
-                className='rounded-lg shadow-xl object-contain'
+                className='rounded-lg shadow-xl object-contain min-w-72'
                 src={src}
                 alt='1'
                 width={300}

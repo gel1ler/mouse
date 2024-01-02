@@ -8,7 +8,7 @@ const Bg = () => {
 
     useEffect(() => {
         const handleMouseMove = (event: any) => {
-            ref.current && setMousePosition({ x: event.clientX - ref.current.getBoundingClientRect().x, y: event.clientY - ref.current.getBoundingClientRect().y });
+            ref.current && setMousePosition({ x: event.clientX, y: event.clientY });
         }
 
         window.addEventListener('mousemove', handleMouseMove);
@@ -33,6 +33,8 @@ const Bg = () => {
         justifyContent: 'center',
         alignItems: 'center',
     }
+
+    console.log(mousePosition)
 
     return (
         <div
